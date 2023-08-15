@@ -1,7 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+// 1 component: template + logic
+// JSX là 1 đoạn code html trong 1 file js
+// babel biên dịch html
+
+//function App() {
+const App = () => {
   return (
     <div className="App">
       <header className="App-header">
