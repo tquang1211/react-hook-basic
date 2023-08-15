@@ -6,9 +6,9 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <h1>
+        <h2>
           Hello world with React hook.
-        </h1>
+        </h2>
       </header>
     </div>
   );
