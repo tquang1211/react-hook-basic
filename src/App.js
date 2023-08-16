@@ -22,7 +22,7 @@ const App = () => {
           <h2>
             Hello world with React hook {name}.
           </h2>
-          <p>{JSON.stringify(obj)}</p>
+          <p style={{ color: 'red', fontSize: '20px', marginTop: '15px' }}>{JSON.stringify(obj)}</p>
           <a href={link} target='_blank'>Visit my channel</a>
         </header>
       </div>
