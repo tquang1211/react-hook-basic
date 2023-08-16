@@ -7,11 +7,12 @@ import Nav from './views/Nav';
 // babel biên dịch html
 
 //function App() {
-const App = () => {
+const App = () => { //dùng function component, còn nếu dùng class thì là class App extens...
   let name = 'Demo';
-  let number = 2021;
-  let obj = { name: 'DeMo', channel: 'Demo Channel' };
-  let link = 'https://www.youtube.com/watch?v=Y9gTouaZJ5s&list=PLncHg6Kn2JT4xzJyhXfmJ53dzwVbq-S_E&index=10';
+
+  const handleEventClick = (event) => {
+    console.log('>>> click me', event.target.value);
+  }
 
   return (
     <>
@@ -22,8 +23,9 @@ const App = () => {
           <h2>
             Hello world with React hook {name}.
           </h2>
-          <p style={{ color: 'red', fontSize: '20px', marginTop: '15px' }}>{JSON.stringify(obj)}</p>
-          <a href={link} target='_blank'>Visit my channel</a>
+          <input type='text' value='Demo' onClick={(event) => handleEventClick(event)} />
+          <button type='button' onClick={(event) => handleEventClick(event)}>Click me</button>
+          {/* <button type='button' onClick={handleEventClick}>Click me</button> */}
         </header>
       </div>
 
