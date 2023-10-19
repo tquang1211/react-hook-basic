@@ -22,7 +22,11 @@ const App = () => { //dùng function component, còn nếu dùng class thì là 
     }
     //hook ko merge state, class component thì tự động merge state
     //...spread syntax array
-    let newToDo = { id: 'abc', title: address, type: 'demo' };
+    let newToDo = {
+      id: Math.floor(Math.random() * 10) + 1,
+      title: address,
+      type: 'demo'
+    };
     setTodos([...todos, newToDo]);
     setAddress('');
   }
@@ -37,6 +41,12 @@ const App = () => { //dùng function component, còn nếu dùng class thì là 
     { id: 'todo3', title: 'Playing game.', type: 'hoidanit' },
     { id: 'todo4', title: 'Reading book.', type: 'hoidanit' }
   ]);
+
+  const deleteDataTodo = (id) => {
+    let currentTodos = todos;
+    currentTodos = currentTodos.filter(item => item.id !== id);
+    setTodos(currentTodos);
+  }
 
   //re-render
   //for => vòng lặp theo index, foreach => vòng lặp theo phần tử
@@ -54,11 +64,13 @@ const App = () => { //dùng function component, còn nếu dùng class thì là 
           <Todo
             todos={todos}
             title={'All props todos'}
+            deleteDataTodo={deleteDataTodo}
           />
 
           <Todo
             todos={todos.filter(item => item.type === 'demo')}
             title={`Demo's todos`}
+            deleteDataTodo={deleteDataTodo}
           />
 
           <input type='text' value={address} onChange={(event) => handleOnChangeInput(event)} />
