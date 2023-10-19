@@ -1,10 +1,15 @@
 const Todo = (props) => {
-    console.log('>>> check props: ', props);
+    //console.log('>>> check props: ', props);
     //properties
     //parent => child, top => bottom
-    const todos = props.myData;
+    const todos = props.todos;
     return (
         <div className='todos-container'>
+            <div className="title">
+                {
+                    props.title
+                }
+            </div>
             {
                 todos.map(todo => {
                     //console.log('>>> check todo list: ', todo);
@@ -13,6 +18,9 @@ const Todo = (props) => {
                     )
                 })
             }
+
+            <hr />
+
         </div>
     )
 }

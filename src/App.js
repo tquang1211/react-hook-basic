@@ -22,7 +22,7 @@ const App = () => { //dùng function component, còn nếu dùng class thì là 
     }
     //hook ko merge state, class component thì tự động merge state
     //...spread syntax array
-    let newToDo = { id: 'abc', title: address };
+    let newToDo = { id: 'abc', title: address, type: 'demo' };
     setTodos([...todos, newToDo]);
     setAddress('');
   }
@@ -32,9 +32,10 @@ const App = () => { //dùng function component, còn nếu dùng class thì là 
   }
 
   const [todos, setTodos] = useState([
-    { id: 'todo1', title: 'Watching Demo IT Channel.' },
-    { id: 'todo2', title: 'Doing homework.' },
-    { id: 'todo3', title: 'Playing game.' }
+    { id: 'todo1', title: 'Watching Demo IT Channel.', type: 'demo' },
+    { id: 'todo2', title: 'Doing homework.', type: 'demo' },
+    { id: 'todo3', title: 'Playing game.', type: 'hoidanit' },
+    { id: 'todo4', title: 'Reading book.', type: 'hoidanit' }
   ]);
 
   //re-render
@@ -43,16 +44,21 @@ const App = () => { //dùng function component, còn nếu dùng class thì là 
   return (
     <>
       <div className="App">
-        <Nav />
         <header className="App-header">
+          <Nav />
           <img src={logo} className="App-logo" alt="logo" />
           <h2>
             Hello world with React hook {name}.
           </h2>
 
           <Todo
-            myData={todos}
-            title={'All props todo'}
+            todos={todos}
+            title={'All props todos'}
+          />
+
+          <Todo
+            todos={todos.filter(item => item.type === 'demo')}
+            title={`Demo's todos`}
           />
 
           <input type='text' value={address} onChange={(event) => handleOnChangeInput(event)} />
