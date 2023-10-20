@@ -5,19 +5,24 @@ import moment from "moment";
 const Covid = () => {
 
     const [dataCovid, setDataCovid] = useState([]);
+    const [loading, setLoading] = useState(true);
     //bằng componentDidMound
     useEffect(async () => {
-        //let res = await axios.get('https://api.apify.com/v2/key-value-stores/EaCBL1JNntjR3EakU/records/LATEST?disableRedirect=true');
-        //let data = res && res.data && res.data.locations ? res.data.locations : [];
+        setTimeout(async () => {
+            // let res = await axios.get('https://api.apify.com/v2/key-value-stores/EaCBL1JNntjR3EakU/records/LATEST?disableRedirect=true');
+            // let data = res && res.data && res.data.locations ? res.data.locations : [];
 
-        //if (data && data.length > 0) {
-        // data.map(item => {
-        //     item.Date = moment(item.Date).format('DD/MM/YYYY');
-        //     return item;
-        // });
-        //}
+            // // if (data && data.length > 0) {
+            // //     data.map(item => {
+            // //         item.Date = moment(item.Date).format('DD/MM/YYYY');
+            // //         return item;
+            // //     });
+            // //     data = data.reverse();
+            // // }
 
-        //setDataCovid(data);
+            // setDataCovid(data);
+            setLoading(false);
+        }, 3000);
     }, []);
 
     return (
@@ -34,7 +39,7 @@ const Covid = () => {
                 </thead>
                 <tbody>
                     {
-                        dataCovid && dataCovid.length > 0 &&
+                        loading === false && dataCovid && dataCovid.length > 0 &&
                         dataCovid.map(item => {
                             return (
                                 <tr key={item.name}>
@@ -45,6 +50,12 @@ const Covid = () => {
                                 </tr>
                             );
                         })
+                    }
+                    {
+                        loading === true &&
+                        <tr>
+                            <td colspan='5' style={{ 'textAlign': "center" }}>Loading data...</td>
+                        </tr>
                     }
                 </tbody>
             </table>
