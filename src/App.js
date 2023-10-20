@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Nav from './views/Nav';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Todo from './views/Todo';
 // import React, { useState } from 'react';
 
@@ -41,6 +41,14 @@ const App = () => { //dùng function component, còn nếu dùng class thì là 
     { id: 'todo3', title: 'Playing game.', type: 'hoidanit' },
     { id: 'todo4', title: 'Reading book.', type: 'hoidanit' }
   ]);
+
+  useEffect(() => {
+    console.log('>>> Run use effect address');
+  }, [address]);
+
+  useEffect(() => {
+    console.log('>>> Run use effect todos');
+  }, [todos]);
 
   const deleteDataTodo = (id) => {
     let currentTodos = todos;
