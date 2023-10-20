@@ -3,6 +3,7 @@ import './App.css';
 import Nav from './views/Nav';
 import { useState, useEffect } from 'react';
 import Todo from './views/Todo';
+import Covid from './views/Covid';
 // import React, { useState } from 'react';
 
 // 1 component: template + logic
@@ -42,13 +43,13 @@ const App = () => { //dùng function component, còn nếu dùng class thì là 
     { id: 'todo4', title: 'Reading book.', type: 'hoidanit' }
   ]);
 
-  useEffect(() => {
-    console.log('>>> Run use effect address');
-  }, [address]);
+  // useEffect(() => {
+  //   console.log('>>> Run use effect address');
+  // }, [address]);
 
-  useEffect(() => {
-    console.log('>>> Run use effect todos');
-  }, [todos]);
+  // useEffect(() => {
+  //   console.log('>>> Run use effect todos');
+  // }, [todos]);
 
   const deleteDataTodo = (id) => {
     let currentTodos = todos;
@@ -69,7 +70,9 @@ const App = () => { //dùng function component, còn nếu dùng class thì là 
             Hello world with React hook {name}.
           </h2>
 
-          <Todo
+          <Covid />
+
+          {/* <Todo
             todos={todos}
             title={'All props todos'}
             deleteDataTodo={deleteDataTodo}
@@ -82,7 +85,7 @@ const App = () => { //dùng function component, còn nếu dùng class thì là 
           />
 
           <input type='text' value={address} onChange={(event) => handleOnChangeInput(event)} />
-          <button type='button' onClick={(event) => handleEventClick(event)}>Click me</button>
+          <button type='button' onClick={(event) => handleEventClick(event)}>Click me</button> */}
           {/* <button type='button' onClick={handleEventClick}>Click me</button> */}
         </header>
       </div>
