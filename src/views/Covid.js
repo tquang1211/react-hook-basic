@@ -5,10 +5,12 @@ import moment from "moment";
 const Covid = () => {
 
     const [dataCovid, setDataCovid] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
+    const [isError, setIsError] = useState(false);
+
     //bằng componentDidMound
     useEffect(async () => {
-        setTimeout(async () => {
+        try {
             // let res = await axios.get('https://api.apify.com/v2/key-value-stores/EaCBL1JNntjR3EakU/records/LATEST?disableRedirect=true');
             // let data = res && res.data && res.data.locations ? res.data.locations : [];
 
@@ -21,8 +23,17 @@ const Covid = () => {
             // // }
 
             // setDataCovid(data);
-            setLoading(false);
-        }, 3000);
+            setIsLoading(false);
+            setIsError(false);
+        }
+        catch (e) {
+            setIsError(true);
+            setIsLoading(false);
+            // alert(e.message);
+            // console.log('>>> Check ex: ', e);
+            // console.log('>>> Check error name: ', e.name);
+            // console.log('>>> Check error message: ', e.message);
+        }
     }, []);
 
     return (
@@ -39,7 +50,7 @@ const Covid = () => {
                 </thead>
                 <tbody>
                     {
-                        loading === false && dataCovid && dataCovid.length > 0 &&
+                        isError === false && isLoading === false && dataCovid && dataCovid.length > 0 &&
                         dataCovid.map(item => {
                             return (
                                 <tr key={item.name}>
@@ -52,9 +63,15 @@ const Covid = () => {
                         })
                     }
                     {
-                        loading === true &&
+                        isLoading === true &&
                         <tr>
                             <td colspan='5' style={{ 'textAlign': "center" }}>Loading data...</td>
+                        </tr>
+                    }
+                    {
+                        isError === true &&
+                        <tr>
+                            <td colspan='5' style={{ 'textAlign': "center" }}>Something wrong...</td>
                         </tr>
                     }
                 </tbody>
