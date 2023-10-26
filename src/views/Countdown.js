@@ -23,7 +23,7 @@ class CountDown extends React.Component {
         if (prevState.count !== this.state.count && this.state.count === 0) {
             if (this.timer) {
                 clearInterval(this.timer);
-                this.props.onTimesup();
+                //this.props.onTimesup();
             }
         }
     }

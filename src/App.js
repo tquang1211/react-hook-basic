@@ -7,6 +7,13 @@ import Covid from './views/Covid';
 import { CountDown, NewCountDown } from './views/Countdown';
 // import React, { useState } from 'react';
 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 // 1 component: template + logic
 // JSX là 1 đoạn code html trong 1 file js
 // babel biên dịch html
@@ -66,44 +73,38 @@ const App = () => { //dùng function component, còn nếu dùng class thì là 
   //for => vòng lặp theo index, foreach => vòng lặp theo phần tử
   //map => trả ra 1 array mới mà ko làm ảnh hưởng dữ liệu cũ
   return (
-    <>
+    <Router>
       <div className="App">
         <header className="App-header">
           <Nav />
           <img src={logo} className="App-logo" alt="logo" />
-
-          <CountDown onTimesup={onTimesup} />
-          <span>----------------------</span>
-          <NewCountDown onTimesup={onTimesup} />
-
-          <h2>
-            Hello world with React hook {name}.
-          </h2>
-
-          <Covid />
-
-          {/* <Todo
-            todos={todos}
-            title={'All props todos'}
-            deleteDataTodo={deleteDataTodo}
-          />
-
-          <Todo
-            todos={todos.filter(item => item.type === 'demo')}
-            title={`Demo's todos`}
-            deleteDataTodo={deleteDataTodo}
-          />
-
-          <input type='text' value={address} onChange={(event) => handleOnChangeInput(event)} />
-          <button type='button' onClick={(event) => handleEventClick(event)}>Click me</button> */}
-          {/* <button type='button' onClick={handleEventClick}>Click me</button> */}
         </header>
-      </div>
 
-      <div>
+        {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+        <Switch>
+          <Route path="/" exact>
+            <Covid />
+          </Route>
 
+          <Route path="/timer">
+            <CountDown onTimesup={onTimesup} />
+            <span>---------------------</span>
+            <NewCountDown onTimesup={onTimesup} />
+          </Route>
+
+          <Route path="/todo">
+            <Todo
+              todos={todos}
+              title={'All todos'}
+              deleteDataTodo={deleteDataTodo}
+            />
+            <input type="text" value={address} onChange={(event) => handleOnChangeInput(event)} />
+            <button type="button" onClick={(event) => handleEventClick(event)}>Click me</button>
+          </Route>
+        </Switch>
       </div>
-    </>
+    </Router>
   );
 }
 
