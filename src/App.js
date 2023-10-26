@@ -4,6 +4,7 @@ import Nav from './views/Nav';
 import { useState, useEffect } from 'react';
 import Todo from './views/Todo';
 import Covid from './views/Covid';
+import { CountDown, NewCountDown } from './views/Countdown';
 // import React, { useState } from 'react';
 
 // 1 component: template + logic
@@ -57,6 +58,10 @@ const App = () => { //dùng function component, còn nếu dùng class thì là 
     setTodos(currentTodos);
   }
 
+  const onTimesup = () => {
+    alert('Times up!!!')
+  }
+
   //re-render
   //for => vòng lặp theo index, foreach => vòng lặp theo phần tử
   //map => trả ra 1 array mới mà ko làm ảnh hưởng dữ liệu cũ
@@ -66,6 +71,11 @@ const App = () => { //dùng function component, còn nếu dùng class thì là 
         <header className="App-header">
           <Nav />
           <img src={logo} className="App-logo" alt="logo" />
+
+          <CountDown onTimesup={onTimesup} />
+          <span>----------------------</span>
+          <NewCountDown onTimesup={onTimesup} />
+
           <h2>
             Hello world with React hook {name}.
           </h2>
