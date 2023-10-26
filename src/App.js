@@ -66,7 +66,7 @@ const App = () => { //dùng function component, còn nếu dùng class thì là 
   }
 
   const onTimesup = () => {
-    alert('Times up!!!')
+    //alert('Times up!!!')
   }
 
   //re-render

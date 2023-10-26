@@ -35,7 +35,7 @@ const useFetch = (url) => {
             // console.log('>>> Check error name: ', e.name);
             // console.log('>>> Check error message: ', e.message);
         }
-    }, []);
+    }, [url]);
 
     return {
         data, isLoading, isError
